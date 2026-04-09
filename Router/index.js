@@ -90,14 +90,14 @@ router.delete('/deletesdata/:name', st.deletestudentdata);
 //teacher api
 router.get('/gettdata',th.getteacherdata);
 router.post('/posttdata',th.postteacherdata);
-router.put('/puttdata/:id',th.putteacherdata);
-router.delete('/deletetdata/:id',th.deleteteacherdata);
+router.put('/puttdata/:name',th.putteacherdata);
+router.delete('/deletetdata/:name',th.deleteteacherdata);
 
 //course api
 router.get('/getcdata',cu.getcoursedata);
 router.post('/postcdata',cu.postcoursedata);
-router.put('/putcdata/:id',cu.putcoursedata);
-router.delete('/deletecdata/:id',cu.deletecoursedata);
+router.put('/putcdata/:name',cu.putcoursedata);
+router.delete('/deletecdata/:name',cu.deletecoursedata);
 
 //userslogin record api
 router.post('/searchlogindata', lgr.searchrecord);
