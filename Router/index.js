@@ -87,17 +87,191 @@ router.put('/putsdata/:name', st.putstudentdata);
  */
 router.delete('/deletesdata/:name', st.deletestudentdata);
 
-//teacher api
-router.get('/gettdata',th.getteacherdata);
-router.post('/posttdata',th.postteacherdata);
-router.put('/puttdata/:name',th.putteacherdata);
-router.delete('/deletetdata/:name',th.deleteteacherdata);
+/**
+ * @swagger
+ * tags:
+ *   name: Teacher
+ *   description: Teacher API
+ */
 
-//course api
-router.get('/getcdata',cu.getcoursedata);
-router.post('/postcdata',cu.postcoursedata);
-router.put('/putcdata/:name',cu.putcoursedata);
-router.delete('/deletecdata/:name',cu.deletecoursedata);
+/**
+ * @swagger
+ * /gettdata:
+ *   get:
+ *     summary: Get all teacher data
+ *     tags: [Teacher]
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved teacher data
+ */
+router.get('/gettdata', th.getteacherdata);
+
+/**
+ * @swagger
+ * /posttdata:
+ *   post:
+ *     summary: Add new teacher data
+ *     tags: [Teacher]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               age:
+ *                 type: integer
+ *               subject:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Teacher added successfully
+ */
+router.post('/posttdata', th.postteacherdata);
+
+/**
+ * @swagger
+ * /puttdata/{name}:
+ *   put:
+ *     summary: Update teacher data by name
+ *     tags: [Teacher]
+ *     parameters:
+ *       - in: path
+ *         name: name
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Name of the teacher
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               age:
+ *                 type: integer
+ *               subject:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Teacher updated successfully
+ */
+router.put('/puttdata/:name', th.putteacherdata);
+
+/**
+ * @swagger
+ * /deletetdata/{name}:
+ *   delete:
+ *     summary: Delete teacher data by name
+ *     tags: [Teacher]
+ *     parameters:
+ *       - in: path
+ *         name: name
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Name of the teacher
+ *     responses:
+ *       200:
+ *         description: Teacher deleted successfully
+ */
+router.delete('/deletetdata/:name', th.deleteteacherdata);
+
+/**
+ * @swagger
+ * tags:
+ *   name: Course
+ *   description: Course API
+ */
+
+/**
+ * @swagger
+ * /getcdata:
+ *   get:
+ *     summary: Get all course data
+ *     tags: [Course]
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved course data
+ */
+router.get('/getcdata', cu.getcoursedata);
+
+/**
+ * @swagger
+ * /postcdata:
+ *   post:
+ *     summary: Add new course data
+ *     tags: [Course]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               duration:
+ *                 type: string
+ *               fees:
+ *                 type: number
+ *     responses:
+ *       201:
+ *         description: Course added successfully
+ */
+router.post('/postcdata', cu.postcoursedata);
+
+/**
+ * @swagger
+ * /putcdata/{name}:
+ *   put:
+ *     summary: Update course data by name
+ *     tags: [Course]
+ *     parameters:
+ *       - in: path
+ *         name: name
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Name of the course
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               duration:
+ *                 type: string
+ *               fees:
+ *                 type: number
+ *     responses:
+ *       200:
+ *         description: Course updated successfully
+ */
+router.put('/putcdata/:name', cu.putcoursedata);
+
+/**
+ * @swagger
+ * /deletecdata/{name}:
+ *   delete:
+ *     summary: Delete course data by name
+ *     tags: [Course]
+ *     parameters:
+ *       - in: path
+ *         name: name
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Name of the course
+ *     responses:
+ *       200:
+ *         description: Course deleted successfully
+ */
+router.delete('/deletecdata/:name', cu.deletecoursedata);
 
 //userslogin record api
 router.post('/searchlogindata', lgr.searchrecord);
